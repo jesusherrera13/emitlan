@@ -24,6 +24,7 @@ class AppController extends Controller
         
         $rick['mod_op'] = 'lideres';
         $rick['id_tipo_estadistica'] = 'bateo';
+        $rick['turnos_oficiales'] = 1;
 
         $lideres_bateo = app(LiderController::class)->lideres($rick);
 

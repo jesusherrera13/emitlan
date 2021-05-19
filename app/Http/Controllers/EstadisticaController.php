@@ -72,11 +72,30 @@ class EstadisticaController extends Controller
                         ) as no_juegos
                         "
                     ),
-                    "equi.descripcion as equipo"
+                    "box.id_equipo","equi.descripcion as equipo",
+                    DB::raw("
+                        (
+                            select count(sco.id_partido) * 2
+                            from scores as sco
+                            left join calendario as cal on cal.id=sco.id_partido
+                            where cal.id_temporada=box.id_temporada and sco.id_equipo=box.id_equipo
+                        ) as turnos_oficiales
+                        "
+                    ),
                 )
                 ->where("box.id_temporada", $request['id_temporada'])
                 ->groupBy("box.id_jugador");
                 // ->havingRaw("h > ?",[0]);
+
+                if($request['id_equipo']) {
+
+                    $query->where("box.id_equipo", $request['id_equipo']);
+                }
+                
+                if($request['turnos_oficiales']) {
+    
+                    $query->havingRaw("ab >= turnos_oficiales");
+                }
 
             if($request['order_by']) {
 
