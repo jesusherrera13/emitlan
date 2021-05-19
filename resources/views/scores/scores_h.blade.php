@@ -9,6 +9,8 @@
             <div class="bd-highlight title game-status">
                 @if($row->id_status == 'GFIN')
                     Final
+                @elseif($row->id_status == 'GIPRG')
+                    En progreso...
                 @else
                     {{ $row->f_partido_ }}
                 @endif
@@ -25,7 +27,7 @@
                         </div>
                         <div class="ml-auto p-1">
                             <div class="team-info">
-                                @if($row->id_status == 'GFIN')
+                                @if($row->id_status == 'GFIN' || $row->id_status == 'GIPRG')
                                 <div class="score text-center">
                                     {{ $row_->r }}
                                 </div>
