@@ -18,7 +18,7 @@
                     @foreach($row->equipos as $k_ => $row_)
                     <div class="d-flex align-items-center justify-content-between bd-highlight">
                         <div class="p-1">
-                            <img src="img/Los_Angeles_Dodgers_Logo.png" class="logo">
+                            <img src="img/equipos/{{$row_->id}}/{{$row_->id}}.png" class="logo">
                         </div>
                         <div class="team-name p-1">
                             {{ $row_->equipo_corto }}

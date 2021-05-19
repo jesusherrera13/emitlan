@@ -76,7 +76,7 @@
     }
 
     .scores .logo {
-      width: 15px;
+      width: 25px;
       margin-right: 3px;
     }
 
